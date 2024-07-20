@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id ="paymentdetails">
+    <input id="cardnumber" placeholder="ENTER CARD Number" type="text" maxlength="16">
+    <input id="cvv" placeholder="ENTER CVV" type="password" maxlength="3">
+    <input  id ="expiry"type="text" placeholder="ENTER EXPIRY DATA">
+    <input  id ="name"type="text" placeholder="ENTER NAME">
+    <input  type="submit" value="submit">
+</form>
+</body>
+</html>
+ <script>
+    document.querySelector("form").addEventListener("submit", details)
+    
+    function details(){
+        event.preventDefault()
+  var naam= document.getElementById("name").value
+  var card= paymentdetails.cardnumber.value;
+  var cv=paymentdetails.cvv.value;
+  var data= paymentdetails.expiry.value;
+//    console.log (data,cv,card,naam)
+
+  var cardnu="123456789";
+  var cV="123"
+  var date="241202"
+   if (card==cardnu && cv==cV && data==date){
+    alert("details are correct")
+    window.location.href="otp.html"
+    // console.log ("correct")
+   }
+     else {
+        alert (" Erorr : Details are incorrect.Please check the details")
+        // return;
+    }
+    
+
+
+
+
+
+
+    
+    }
+    
+ </script>

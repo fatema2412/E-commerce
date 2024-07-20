@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h2>OTP SEND</h2>  
+  <form id="otp">
+    <input placeholder="ENTER OPT" type="number" id="otpnum">
+    <input type="submit" value="submit">
+  </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit" , otpfun)
+    function otpfun(){
+        event.preventDefault()
+    var ans= otp.otpnum.value
+    console.log (ans)
+    if (ans==1234){
+        alert(" Payment Sucessfull")
+    }
+    }
+</script>
