@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        border: 2px solid black;
+        display: grid;
+        width: 40%;
+    }
+    #coupon{
+    width: 30%;
+    height: 100px;
+    border-color: aqua;
+    margin-bottom: 50px
+    }
+    #totalPrice{
+        margin-bottom: 50px;
+        /* margin-top: 100px; */
+        width: 60%;
+    }
+</style>
+<body>
+    <h1>Cart page</h1>
+    <div id ="totalPrice">
+        <h3>total price nd quantity</h3>
+        </div>
+            <div id ="coupon">
+        <input placeholder="APPLY PROMO">
+        <button > CLICK</button> 
+    </div>
+</body>
+</html>
+<script>
+    var cart= JSON.parse (localStorage.getItem ("selecteditem"));
+    var totalPrice=0;
+    var  totalQuanity= cart.length;
+    // var sum=cart.reduce(function (acc,elem){
+    // return acc+elem.price
+    // },0);
+    // console.log(sum)
+    mensCart(cart)
+    
+     function  mensCart(cart) {
+       
+      cart.forEach(function(elem){
+        var Quantity=1;
+
+        console.log (totalQuanity);
+        var price = Number(elem.price)
+        totalPrice=totalPrice+price
+        // console.log (totalPrice);
+     var box=document.createElement("div")
+      var img=document.createElement("img")
+     img.setAttribute("src","elem.image_url")
+     var h6=document.createElement("h6")
+     h6.innerText=elem.name
+     var para=document.createElement("p")
+     para.innerText= price;
+     var para2=document.createElement("p")
+     para2.innerText=elem.strikedoffprice
+     var para3=document.createElement("p")
+//  button.addEventListener("click", myfunction)
+ 
+     para3.innerText= Quantity + " + "
+        para3.style.cursor="pointer"
+     para3.addEventListener("click",function(){
+        Quantity++;
+        totalQuanity++
+        console.log ( totalQuanity);
+        para3.innerText= Quantity + " + "
+          price =price+(Number(elem.price))
+        console.log (price ,Number(elem.price)) 
+        para.innerText= price
+       totalPrice=totalPrice+Number(elem.price)
+       updateTotalPrice();   
+     })
+     var button =document.createElement("button")
+     button.innerText="DELETE"
+     button.style.cursor="pointer";
+     button.addEventListener("click",function(){
+        rem(elem,price,Quantity)
+     })
+
+     
+
+    
+     box.append( img,h6,para,para2,para3,button);
+        
+     document.querySelector("body").append(box)
+    })
+   updateTotalPrice();
+      }
+      
+       function rem(elem,price,Quantity)
+      {
+        event.target.parentNode.remove() 
+        totalPrice-=elem.price;
+        totalQuanity-=Quantity;
+        updateTotalPrice(); 
+    }
+    function updateTotalPrice(){
+        document.getElementById("totalPrice").innerText= "Total Price" + totalPrice + "  Total Quanity   " + totalQuanity;
+    }
+   document.querySelector("button").addEventListener("click",promo)
+   var input=document.querySelector("input")
+    function promo(){
+        if (input.value ="masai30"){
+            var ans=(totalPrice*30)/100
+        totalPrice=(totalPrice-ans)
+        console.log (totalPrice);
+       updateTotalPrice();
+        }
+        else {
+            console.log ("aaaa")
+        }
+    }
+    
+  
+
+    
+   
+ 
+    
+   
+    
+    
+
+   
+
+    
+
+     
+</script>
